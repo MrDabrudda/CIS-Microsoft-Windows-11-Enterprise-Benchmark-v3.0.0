@@ -17,3 +17,5 @@ I use Wazuh XDR/SEIM to assess my systems and this script will make a Windows 11
 https://learn.microsoft.com/en-us/compliance/regulatory/offering-CIS-Benchmark
 
 https://www.cisecurity.org/
+
+<img width="931" height="424" alt="SCA1" src="https://github.com/user-attachments/assets/0472e1b2-f779-435c-9629-74cd8b298531" />
