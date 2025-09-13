@@ -716,7 +716,7 @@ Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\Software\Policies\Microsoft
 #CIS26216
 New-Item -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers"
 New-Item -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint"
-Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint" -Name RestrictDriverInstallationToAdministrators -Value 0
+Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint" -Name RestrictDriverInstallationToAdministrators -Value 1
 
 #CIS26217
 Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Printers" -Name CopyFilesPolicy -Value 1
@@ -1639,4 +1639,5 @@ Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\
 #CIS26481
 
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate -Name AllowOptionalContent -Value 0
+
 
