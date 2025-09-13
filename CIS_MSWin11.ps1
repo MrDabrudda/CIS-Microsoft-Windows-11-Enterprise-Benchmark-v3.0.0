@@ -3,7 +3,8 @@
 #18AUG2025
 #Policy description: This document provides prescriptive guidance for establishing a secure configuration posture for Microsoft Windows 11.
 
-set-executionpolicy bypass
+#set-executionpolicy bypass
+& { Set-ExecutionPolicy Bypass -Scope Process }
 
 #CIS26000
 net accounts /uniquepw:24
@@ -1639,5 +1640,6 @@ Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\
 #CIS26481
 
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate -Name AllowOptionalContent -Value 0
+
 
 
