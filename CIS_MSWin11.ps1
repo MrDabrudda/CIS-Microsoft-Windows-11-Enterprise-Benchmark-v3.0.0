@@ -1,6 +1,6 @@
 #CIS Microsoft Windows 11 Enterprise Benchmark v3.0.0
 #Author: MrDabrudda
-#18AUG2025
+#14OCT2025
 #Policy description: This document provides prescriptive guidance for establishing a secure configuration posture for Microsoft Windows 11.
 
 #set-executionpolicy bypass
@@ -84,6 +84,7 @@ Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\C
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name MaxDevicePasswordFailedAttempts -Value 29
 
 #CIS26025
+#Set Desktop timeout until lock screen engaged
 #Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name InactivityTimeoutSecs -Value 900
 
 #CIS26026
@@ -195,7 +196,9 @@ Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Con
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0 -Name AuditReceivingNTLMTraffic -Value 2
 
 #CIS26061
-Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0 -Name RestrictSendingNTLMTraffic -Value 2
+#Breaks NTLMv2 Login to remote file shares
+#Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0 -Name RestrictSendingNTLMTraffic -Value 2
+Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0 -Name RestrictSendingNTLMTraffic -Value 0
 
 #CIS26062
 Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Kernel" -Name ObCaseInsensitive -Value 1
@@ -717,7 +720,6 @@ Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\Software\Policies\Microsoft
 Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Printers" -Name RpcTcpPort -Value 0
 
 #CIS26216
-#??????????????
 New-Item -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers"
 New-Item -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint"
 Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint" -Name RestrictDriverInstallationToAdministrators -Value 0
@@ -1014,7 +1016,10 @@ New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\AppModel\StateManager -Name AllowSharedLocalAppData -Value 0
 
 #CIS26297
-Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx -Name BlockNonAdminUserInstall -Value 1
+#Enable users to install apps from Microsoft Store
+Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx -Name BlockNonAdminUserInstall -Value 0
+#Disable users to install apps from Microsoft Store
+#Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx -Name BlockNonAdminUserInstall -Value 1
 
 #CIS26298
 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy
