@@ -1,4 +1,4 @@
-# CIS-Microsoft-Windows-11-Enterprise-Benchmark-v3.0.0
+# CIS-Microsoft-Windows-11-Benchmark-v3.0.0
 
 Download the zip file from Github
 
