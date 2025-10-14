@@ -437,10 +437,10 @@ New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsF
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile -Name EnableFirewall -Value 1
 
 #CIS26131
-#Disable Inbound Public Firewall
-#Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile -Name DefaultInboundAction -Value 0
-#Enable Inbound Public Firewall
-Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile -Name DefaultInboundAction -Value 1
+#Enable changes to Inbound Public Firewall
+Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile -Name DefaultInboundAction -Value 0
+#Disable changes to Inbound Public Firewall
+#Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile -Name DefaultInboundAction -Value 1
 
 #CIS26132
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile -Name DisableNotifications -Value 1
@@ -587,8 +587,10 @@ Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Ser
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest -Name UseLogonCredential -Value 0
 
 #CIS26178
+#Enable Auto Login
+#Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoAdminLogon -Value 1
 #Disable Auto Login
-#Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoAdminLogon -Value 0
+Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoAdminLogon -Value 0
 
 #CIS26179
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters -Name DisableIPSourceRouting -Value 2
@@ -715,6 +717,7 @@ Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\Software\Policies\Microsoft
 Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Printers" -Name RpcTcpPort -Value 0
 
 #CIS26216
+#??????????????
 New-Item -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers"
 New-Item -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint"
 Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint" -Name RestrictDriverInstallationToAdministrators -Value 0
@@ -777,17 +780,13 @@ Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceIDs -Name 1 -Value "PCI\CC_0C0A"
 
 #CIS26233
-New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceIDsRetroactive
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceIDsRetroactive -Name 1 -Value ""
 
 #CIS26234
 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses
 
 #CIS26235
-Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses -Name 1 -Value {d48179be-ec20-11d1-b6b8-00c04fa372a7}
-Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses -Name 2 -Value {7ebefbc0-3200-11d2-b4c2-00a0C9697d07}
-Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses -Name 3 -Value {c06ff265-ae09-48f0-812c-16753d7cba83}
-Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses -Name 4 -Value {6bdd1fc1-810f-11d0-bec7-08002be2092f}
+New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses
 
 #CIS26236
 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions -Name DenyDeviceClassesRetroactive
@@ -822,8 +821,9 @@ Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\
 Remove-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System -Name DisableBkGndGroupPolicy
 
 #CIS26245
-#Turn off access to Windows Store
+#Enable Microsoft Store
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer -Name NoUseStoreOpenWith -Value 0
+#Disable Microsoft Store
 #Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer -Name NoUseStoreOpenWith -Value 1
 
 #CIS26246
@@ -1014,9 +1014,7 @@ New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\AppModel\StateManager -Name AllowSharedLocalAppData -Value 0
 
 #CIS26297
-#Prevent non-admins from installing packages from Microsoft Store
-Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx -Name BlockNonAdminUserInstall -Value 0
-#Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx -Name BlockNonAdminUserInstall -Value 1
+Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx -Name BlockNonAdminUserInstall -Value 1
 
 #CIS26298
 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy
@@ -1185,8 +1183,8 @@ Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE -Name DisableExternalDMAUnderLock -Value 1
 
 #CIS26352
-#Disable Access to Camera
 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Camera
+#Disable Access to Camera
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Camera -Name AllowCamera -Value 0
 #Enable Access to Camera
 #Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Camera -Name AllowCamera -Value 1
@@ -1495,21 +1493,34 @@ Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft
 
 #CIS26439
 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore
-Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore -Name DisableStoreApps -Value 1
+#Enable Microsoft Store Apps
+Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore -Name DisableStoreApps -Value 0
+#Disable Microsoft Store Apps
+#Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore -Name DisableStoreApps -Value 1
 
 #CIS26440
-Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore" -Name RequirePrivateStoreOnly -Value 1
+#Enable Microsoft Retail Store
+Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore" -Name RequirePrivateStoreOnly -Value 0
+#Enable Microsoft Retail Store
+#Set-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore" -Name RequirePrivateStoreOnly -Value 1
 
 #CIS26441
-Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore -Name AutoDownload -Value 4
+#Enable automatic Microsoft Store app updates
+Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore -Name AutoDownload -Value 2
+#Disable automatic Microsoft Store app updates
+#Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore -Name AutoDownload -Value 4
 
 #CIS26442
-#Disable OS upgrade prompts
-Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore -Name DisableOSUpgrade -Value 1
+#Enable Microsoft Store OS upgrade prompts
+Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore -Name DisableOSUpgrade -Value 0
+#Disable Microsoft Store OS upgrade prompts
+#Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore -Name DisableOSUpgrade -Value 1
 
 #CIS26443
-#Disable Windows Store
-Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore -Name RemoveWindowsStore -Value 1
+#Enable Microsoft Store app
+Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore -Name RemoveWindowsStore -Value 0
+#Disable Microsoft Store app
+#Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore -Name RemoveWindowsStore -Value 1
 
 #CIS26444
 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Dsh
@@ -1552,6 +1563,8 @@ Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\
 
 #CIS26455
 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer
+Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer -Name EnableUserControl -Value 0
+
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer -Name EnableUserControl -Value 0
 
 #CIS26456
@@ -1645,14 +1658,4 @@ Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate -Name DeferQualityUpdatesPeriodInDays -Value 0
 
 #CIS26481
-
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate -Name AllowOptionalContent -Value 0
-
-
-
-
-
-
-
-
-
