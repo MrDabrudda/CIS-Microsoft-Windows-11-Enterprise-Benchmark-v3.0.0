@@ -1,6 +1,6 @@
 #CIS Microsoft Windows 11 Enterprise Benchmark v3.0.0
 #Author: MrDabrudda
-#14OCT2025
+#20OCT2025
 #Policy description: This document provides prescriptive guidance for establishing a secure configuration posture for Microsoft Windows 11.
 
 #set-executionpolicy bypass
@@ -468,85 +468,166 @@ Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging -Name LogSuccessfulConnections -Value 1
 
 #CIS26139
-auditpol /set /subcategory:"Credential Validation" /success:enable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"Credential Validation" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Credential Validation" /success:enable /failure:enable
 
 #CIS26140
-auditpol /set /subcategory:"Application Group Management" /success:enable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"Application Group Management" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Application Group Management" /success:enable /failure:enable
 
 #CIS26141
-auditpol /set /subcategory:"Security Group Management" /success:enable /failure:disable
+#Disable Auditing
+auditpol /set /subcategory:"Security Group Management" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Security Group Management" /success:enable /failure:disable
 
 #CIS26142
-auditpol /set /subcategory:"User Account Management" /success:enable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"User Account Management" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"User Account Management" /success:enable /failure:enable
 
 #CIS26143
-auditpol /set /subcategory:"Plug and Play Events" /success:enable /failure:disable
+#Disable Auditing
+auditpol /set /subcategory:"Plug and Play Events" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Plug and Play Events" /success:enable /failure:disable
 
 #CIS26144
-auditpol /set /subcategory:"Process Creation" /success:enable /failure:disable
+#Disable Auditing
+auditpol /set /subcategory:"Process Creation" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Process Creation" /success:enable /failure:disable
 
 #CIS26145
-auditpol /set /subcategory:"Account Lockout" /success:disable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"Account Lockout" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Account Lockout" /success:disable /failure:enable
 
 #CIS26146
-auditpol /set /subcategory:"Group Membership" /success:enable /failure:disable
+#Disable Auditing
+auditpol /set /subcategory:"Group Membership" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Group Membership" /success:enable /failure:disable
 
 #CIS26147
-auditpol /set /subcategory:"Logoff" /success:enable /failure:disable
+#Disable Auditing
+auditpol /set /subcategory:"Logoff" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Logoff" /success:enable /failure:disable
 
 #CIS26148
-auditpol /set /subcategory:"Logon" /success:enable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"Logon" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Logon" /success:enable /failure:enable
 
 #CIS26149
-auditpol /set /subcategory:"Other Logon/Logoff Events" /success:enable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"Other Logon/Logoff Events" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Other Logon/Logoff Events" /success:enable /failure:enable
 
 #CIS26150
-auditpol /set /subcategory:"Special Logon" /success:enable /failure:disable
+#Disable Auditing
+auditpol /set /subcategory:"Special Logon" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Special Logon" /success:enable /failure:disable
 
 #CIS26151
-auditpol /set /subcategory:"Detailed File Share" /success:disable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"Detailed File Share" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Detailed File Share" /success:disable /failure:enable
 
 #CIS26152
-auditpol /set /subcategory:"File Share" /success:enable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"File Share" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"File Share" /success:enable /failure:enable
 
 #CIS26153
-auditpol /set /subcategory:"Other Object Access Events" /success:enable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"Other Object Access Events" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Other Object Access Events" /success:enable /failure:enable
 
 #CIS26154
-auditpol /set /subcategory:"Removable Storage" /success:enable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"Removable Storage" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Removable Storage" /success:enable /failure:enable
 
 #CIS26155
-auditpol /set /subcategory:"Audit Policy Change" /success:enable /failure:disable
+#Disable Auditing
+auditpol /set /subcategory:"Audit Policy Change" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Audit Policy Change" /success:enable /failure:disable
 
 #CIS26156
-auditpol /set /subcategory:"Authentication Policy Change"  /success:enable /failure:disable
+#Disable Auditing
+auditpol /set /subcategory:"Authentication Policy Change"  /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Authentication Policy Change"  /success:enable /failure:disable
 
 #CIS26157
-auditpol /set /subcategory:"Authorization Policy Change" /success:enable /failure:disable
+#Disable Auditing
+auditpol /set /subcategory:"Authorization Policy Change" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Authorization Policy Change" /success:enable /failure:disable
 
 #CIS26158
-auditpol /set /subcategory:"MPSSVC Rule-Level Policy Change" /success:enable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"MPSSVC Rule-Level Policy Change" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"MPSSVC Rule-Level Policy Change" /success:enable /failure:enable
 
 #CIS26159
-auditpol /set /subcategory:"Other Policy Change Events"  /success:disable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"Other Policy Change Events"  /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Other Policy Change Events"  /success:disable /failure:enable
 
 #CIS26160
-auditpol /set /subcategory:"Sensitive Privilege Use"  /success:enable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"Sensitive Privilege Use" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Sensitive Privilege Use" /success:enable /failure:enable
 
 #CIS26161
-auditpol /set /subcategory:"IPsec Driver" /success:enable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"IPsec Driver" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"IPsec Driver" /success:enable /failure:enable
 
 #CIS26162
-auditpol /set /subcategory:"Other System Events" /success:enable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"Other System Events" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Other System Events" /success:enable /failure:enable
 
 #CIS26163
-auditpol /set /subcategory:"Security State Change" /success:enable /failure:disable
+#Disable Auditing
+auditpol /set /subcategory:"Security State Change" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Security State Change" /success:enable /failure:disable
 
 #CIS26164
-auditpol /set /subcategory:"Security System Extension" /success:enable /failure:disable
+#Disable Auditing
+auditpol /set /subcategory:"Security System Extension" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"Security System Extension" /success:enable /failure:disable
 
 #CIS26165
-auditpol /set /subcategory:"System Integrity" /success:enable /failure:enable
+#Disable Auditing
+auditpol /set /subcategory:"System Integrity" /success:disable /failure:disable
+#Enable Auditing
+#auditpol /set /subcategory:"System Integrity" /success:enable /failure:enable
 
 #CIS26166
 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization
@@ -1663,4 +1744,5 @@ Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate -Name DeferQualityUpdatesPeriodInDays -Value 0
 
 #CIS26481
+
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate -Name AllowOptionalContent -Value 0
