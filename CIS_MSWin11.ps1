@@ -361,7 +361,11 @@ Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Ser
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WpnService -Name Start -Value 4
 
 #CIS26109
-Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PushToInstall -Name Start -Value 4
+#Enable Application Installations from Microsoft Store
+Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PushToInstall -Name Start -Value 2
+#Disable Application Installations from Microsoft Store
+##Breaks Microsoft Store from installing/updating apps
+#Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PushToInstall -Name Start -Value 4
 
 #CIS26110
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinRM -Name Start -Value 4
@@ -1746,3 +1750,4 @@ Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\
 #CIS26481
 
 Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate -Name AllowOptionalContent -Value 0
+
